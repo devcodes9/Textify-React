@@ -14,6 +14,16 @@ export const TextForm = (props) => {
     let newtext = text.toLowerCase();
     setText(newtext);
   }
+  const wordCnt = () => {
+    if(text[text.length - 1] === ' '){
+      return text.split(" ").length - 1;
+    }
+    if(text.trim().length === 0){
+      return 0;
+    }
+
+    return text.split(" ").length;
+  }
   return (
     <>
       <div className='container'>
@@ -26,7 +36,7 @@ export const TextForm = (props) => {
       </div>
       <div className="container my-3">
         <h2>Your Text Summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
+        <p>{wordCnt()} words and {text.length} characters</p>
         <p>{0.008 * text.split(" ").length} Minute read</p>
         <h2>Preview</h2>
         <p>{text}</p>
